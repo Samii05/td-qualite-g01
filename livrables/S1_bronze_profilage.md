@@ -64,20 +64,41 @@ Motifs (conformes / non conformes) :
 
 Preuve (notebook, requête) : [À COMPLÉTER]
 
+
 ## 4. Dictionnaire du CIF (US-04)
 
-| Colonne d'origine | Nom proposé | Type | Justification chiffrée (comment l'avez-vous déduit ?) |
+Pour cette User Story, j'ai analysé la table `cif.clients`, qui contient 40 000 enregistrements et dix colonnes anonymes, nommées de `column0` à `column9`.
+
+J'ai d'abord examiné leur structure et quelques lignes, puis j'ai calculé le nombre de valeurs distinctes, les valeurs manquantes, les longueurs et certains motifs. Cela m'a permis de proposer les noms métier suivants.
+
+| Colonne d'origine | Nom proposé | Type SQL | Justification chiffrée |
 |---|---|---|---|
-| … | … | … | … |
-| … | … | … | … |
-| … | … | … | … |
-| … | … | … | … |
-| … | … | … | … |
-| … | … | … | … |
-| … | … | … | … |
-| … | … | … | … |
-| … | … | … | … |
-| … | … | … | … |
+| column0 | Identifiant client CIF | VARCHAR(10) | 40 000 valeurs distinctes sur 40 000 lignes, aucune manquante, longueur fixe de 7 caractères. Les 40 000 identifiants respectent le motif `K` suivi de six chiffres. |
+| column1 | Nom / raison sociale | VARCHAR(120) | 731 valeurs distinctes, aucune manquante, longueur de 3 à 31 caractères. |
+| column2 | Prénom | VARCHAR(80) | 180 valeurs distinctes, 645 manquantes, longueur de 3 à 10 caractères pour les valeurs présentes. |
+| column3 | Date de naissance | VARCHAR(10) | 21 081 valeurs distinctes, 645 manquantes. Les 39 355 dates renseignées suivent le format `JJ/MM/AAAA`. |
+| column4 | Adresse postale | VARCHAR(120) | 9 811 valeurs distinctes, aucune manquante, longueur de 11 à 31 caractères. |
+| column5 | Code postal | VARCHAR(10) | 188 valeurs distinctes, aucune manquante, longueur de 4 à 8 caractères. |
+| column6 | Commune | VARCHAR(80) | 172 valeurs distinctes, aucune manquante, longueur de 3 à 24 caractères. |
+| column7 | Code pays | VARCHAR(5) | 9 codes distincts de deux lettres, aucune valeur manquante. Le code FR représente 39 401 clients sur 40 000. |
+| column8 | Téléphone | VARCHAR(25) | 33 676 valeurs distinctes, 6 324 manquantes. Les 33 676 numéros renseignés respectent le motif testé : zéro suivi de neuf chiffres. |
+| column9 | Adresse e-mail | VARCHAR(120) | 21 128 valeurs distinctes, 18 872 manquantes. Les valeurs renseignées respectent le contrôle simple de structure d'une adresse e-mail. |
+
+### Analyse et interprétation
+
+Ce travail m'a permis de retrouver la signification probable des dix colonnes du système CIF en m'appuyant sur les données, plutôt que sur des suppositions.
+
+J'ai constaté que les identifiants CIF étaient tous distincts et conformes au format testé. En revanche, certaines informations sont stockées sous forme de texte, notamment les dates de naissance, ce qui nécessitera une conversion contrôlée lors de la standardisation des données.
+
+J'ai également observé que 645 enregistrements n'avaient ni prénom ni date de naissance. Ces lignes pourraient correspondre à des personnes morales, mais cette interprétation reste à confirmer par une analyse des noms.
+
+Enfin, les coordonnées de contact ne sont pas toutes renseignées : 6 324 téléphones et 18 872 e-mails sont manquants. Cette situation devra être prise en compte dans les futurs contrôles de qualité, sans considérer automatiquement toutes ces absences comme des erreurs.
+
+**Preuve reproductible :** `notebooks/S1_US04_Dictionnaire_CIF.ipynb`
+
+**Source analysée :** `cif.clients` (40 000 lignes).
+
+**Rôle concerné :** Data Steward — proposition du dictionnaire métier, à valider avec le Data Owner.
 
 ## 5. Trois définitions du « client actif » (US-09)
 
