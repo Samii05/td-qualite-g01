@@ -1,0 +1,35 @@
+checks for crm_client:
+  # RQ-020 : clé primaire unique et renseignée
+  - duplicate_count(client_id) = 0:
+      name: RQ-020 BRONZE duplicate_count(client_id) = 0
+  - missing_count(client_id) = 0:
+      name: RQ-020 BRONZE missing_count(client_id) = 0
+
+  # RQ-009 : type de personne dans le domaine
+  - invalid_count(type_personne) = 0:
+      name: RQ-009 type de personne autorise BRONZE
+      valid values: ['prospect', 'souscripteur', 'assure']
+
+  # RQ-003 : téléphone d'un souscripteur renseigné (nul, vide ou blanc)
+  - failed rows:
+      name: RQ-003 telephone du souscripteur renseigne BRONZE
+      fail condition: type_personne = 'souscripteur' AND (telephone IS NULL OR TRIM(telephone) = '')
+
+  # RQ-005 : code postal à 5 chiffres pour une adresse en France
+  - failed rows:
+      name: RQ-005 code postal sur 5 chiffres (France) BRONZE
+      fail condition: pays = 'FR' AND cp NOT REGEXP '^[0-9]{5}$'
+
+  # RQ-007 : pays dans la liste de référence
+  - failed rows:
+      name: RQ-007 pays dans la liste de reference BRONZE
+      fail query: |
+        SELECT c.client_id FROM crm_client c WHERE c.pays IS NULL OR NOT EXISTS (SELECT 1 FROM silver.ref_pays r WHERE BINARY r.code_pays = BINARY c.pays)
+
+  # RQ-015 : un prospect n'a aucun crm_contrat (échoue sur les données brutes)
+  - failed rows:
+      name: RQ-015 prospect sans crm_contrat BRONZE
+      fail query: |
+        SELECT c.client_id FROM crm_client c
+        WHERE c.type_personne = 'prospect'
+          AND EXISTS (SELECT 1 FROM crm_contrat k WHERE k.souscripteur_id = c.client_id)

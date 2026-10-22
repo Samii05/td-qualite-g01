@@ -1,0 +1,27 @@
+[17:36:17] Soda Core 3.3.5
+[17:36:18] Using DefaultSampler
+[17:36:19] Using DefaultSampler
+[17:36:28] Using DefaultSampler
+[17:36:28] Using DefaultSampler
+[17:36:28] Using DefaultSampler
+[17:36:29] Scan summary:
+[17:36:29] 2/7 checks PASSED:
+[17:36:29]     crm_client in bronze
+[17:36:29]       RQ-020 BRONZE duplicate_count(client_id) = 0 [PASSED]
+[17:36:29]       RQ-020 BRONZE missing_count(client_id) = 0 [PASSED]
+[17:36:29] 5/7 checks FAILED:
+[17:36:29]     crm_client in bronze
+[17:36:29]       RQ-003 telephone du souscripteur renseigne BRONZE [FAILED]
+[17:36:29]         check_value: 5989
+[17:36:29]         failed_rows_sample_ref: not-persisted Samples are not sent to Soda Cloud 18x(5989/5989)
+[17:36:29]       RQ-005 code postal sur 5 chiffres (France) BRONZE [FAILED]
+[17:36:29]         check_value: 1456
+[17:36:29]         failed_rows_sample_ref: not-persisted Samples are not sent to Soda Cloud 18x(1456/1456)
+[17:36:29]       RQ-007 pays dans la liste de reference BRONZE [FAILED]
+[17:36:29]         value: 3050
+[17:36:29]       RQ-015 prospect sans crm_contrat BRONZE [FAILED]
+[17:36:29]         value: 479
+[17:36:29]       RQ-009 type de personne autorise BRONZE [FAILED]
+[17:36:29]         check_value: 200
+[17:36:29] Oops! 5 failures. 0 warnings. 0 errors. 2 pass.
+Saving scan results to /home/jovyan/work/reports/s3/validation_us12_us16/client.json

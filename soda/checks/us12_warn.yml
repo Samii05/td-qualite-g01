@@ -1,0 +1,5 @@
+checks for crm_contrat:
+  - row_count:
+      name: RQ-020 BRONZE demonstration warn
+      warn: when < 100001
+      fail: when < 99999

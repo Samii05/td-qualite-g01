@@ -1,0 +1,17 @@
+[17:36:39] Soda Core 3.3.5
+[17:36:48] Using DefaultSampler
+[17:37:02] Scan summary:
+[17:37:02] 4/6 checks PASSED:
+[17:37:02]     crm_sinistre in bronze
+[17:37:02]       RQ-020 BRONZE sinistre identifiant renseigne [PASSED]
+[17:37:02]       RQ-020 identifiant de crm_sinistre unique BRONZE [PASSED]
+[17:37:02]       RQ-014 code postal de crm_sinistre sur 5 chiffres BRONZE [PASSED]
+[17:37:02]       RQ-014 BRONZE adresse sinistre renseignee [PASSED]
+[17:37:02] 2/6 checks FAILED:
+[17:37:02]     crm_sinistre in bronze
+[17:37:02]       RQ-017 crm_sinistre hors periode de garantie BRONZE [FAILED]
+[17:37:02]         value: 1200
+[17:37:02]       RQ-014 BRONZE taux erreur BAN [FAILED]
+[17:37:02]         check_value: 12.1
+[17:37:02] Oops! 2 failures. 0 warnings. 0 errors. 4 pass.
+Saving scan results to /home/jovyan/work/reports/s3/validation_us12_us16/sinistre.json

@@ -1,0 +1,29 @@
+[17:36:31] Soda Core 3.3.5
+[17:36:32] Using DefaultSampler
+[17:36:33] Using DefaultSampler
+[17:36:34] Using DefaultSampler
+[17:36:36] Using DefaultSampler
+[17:36:36] Using DefaultSampler
+[17:36:36] Scan summary:
+[17:36:36] 2/8 checks PASSED:
+[17:36:36]     crm_contrat in bronze
+[17:36:36]       RQ-020 BRONZE duplicate_count(contrat_id) = 0 [PASSED]
+[17:36:36]       RQ-020 BRONZE missing_count(contrat_id) = 0 [PASSED]
+[17:36:36] 6/8 checks FAILED:
+[17:36:36]     crm_contrat in bronze
+[17:36:36]       RQ-001 date de fin posterieure a la date de debut BRONZE [FAILED]
+[17:36:36]         check_value: 800
+[17:36:36]         failed_rows_sample_ref: not-persisted Samples are not sent to Soda Cloud 14x(800/800)
+[17:36:36]       RQ-011 type de crm_contrat connu BRONZE [FAILED]
+[17:36:36]         value: 200
+[17:36:36]       RQ-012 souscripteur existant BRONZE [FAILED]
+[17:36:36]         value: 1000
+[17:36:36]       RQ-018 BRONZE ecart definitions initiales [FAILED]
+[17:36:36]         check_value: 11878.0
+[17:36:36]       RQ-010 duree de garantie autorisee BRONZE [FAILED]
+[17:36:36]         check_value: 600
+[17:36:36]     crm_contrat [assure_renseigne] in bronze
+[17:36:36]       RQ-013 assure existant (sentinelle 0 exclue) BRONZE [FAILED]
+[17:36:36]         value: 300
+[17:36:36] Oops! 6 failures. 0 warnings. 0 errors. 2 pass.
+Saving scan results to /home/jovyan/work/reports/s3/validation_us12_us16/contrat.json

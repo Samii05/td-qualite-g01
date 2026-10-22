@@ -1,0 +1,36 @@
+checks for crm_client:
+  - us16_relation_0:
+      name: RQ-012 BRONZE crm_contrat.souscripteur_id relation 0
+      us16_relation_0 query: |
+        SELECT COALESCE(SUM(c.`souscripteur_id` IS NOT NULL  AND c.`souscripteur_id` NOT IN (SELECT `client_id` FROM bronze.crm_client WHERE `client_id` IS NOT NULL AND _batch_id='L-2026-10-01')),0) FROM bronze.crm_contrat c WHERE c._batch_id='L-2026-10-01'
+      fail: when > 0
+  - us16_relation_1:
+      name: RQ-013 brut BRONZE crm_contrat.assure_id relation 1
+      us16_relation_1 query: |
+        SELECT COALESCE(SUM(c.`assure_id` IS NOT NULL  AND c.`assure_id` NOT IN (SELECT `client_id` FROM bronze.crm_client WHERE `client_id` IS NOT NULL AND _batch_id='L-2026-10-01')),0) FROM bronze.crm_contrat c WHERE c._batch_id='L-2026-10-01'
+      fail: when > 0
+  - us16_relation_2:
+      name: RQ-013 BRONZE crm_contrat.assure_id relation 2
+      us16_relation_2 query: |
+        SELECT COALESCE(SUM(c.`assure_id` IS NOT NULL AND c.`assure_id`<>'0' AND c.`assure_id` NOT IN (SELECT `client_id` FROM bronze.crm_client WHERE `client_id` IS NOT NULL AND _batch_id='L-2026-10-01')),0) FROM bronze.crm_contrat c WHERE c._batch_id='L-2026-10-01'
+      fail: when > 0
+  - us16_relation_3:
+      name: RQ-011 BRONZE crm_contrat.code_type relation 3
+      us16_relation_3 query: |
+        SELECT COALESCE(SUM(c.`code_type` IS NOT NULL  AND c.`code_type` NOT IN (SELECT `code_type` FROM bronze.crm_type_contrat WHERE `code_type` IS NOT NULL AND _batch_id='L-2026-10-01')),0) FROM bronze.crm_contrat c WHERE c._batch_id='L-2026-10-01'
+      fail: when > 0
+  - us16_relation_4:
+      name: US-16 BRONZE crm_sinistre.contrat_id relation 4
+      us16_relation_4 query: |
+        SELECT COALESCE(SUM(c.`contrat_id` IS NOT NULL  AND c.`contrat_id` NOT IN (SELECT `contrat_id` FROM bronze.crm_contrat WHERE `contrat_id` IS NOT NULL AND _batch_id='L-2026-10-01')),0) FROM bronze.crm_sinistre c WHERE c._batch_id='L-2026-10-01'
+      fail: when > 0
+  - us16_relation_5:
+      name: US-16 BRONZE cif_compte.column1 relation 5
+      us16_relation_5 query: |
+        SELECT COALESCE(SUM(c.`column1` IS NOT NULL  AND c.`column1` NOT IN (SELECT `column0` FROM bronze.cif_clients WHERE `column0` IS NOT NULL AND _batch_id='L-2026-10-01')),0) FROM bronze.cif_compte c WHERE c._batch_id='L-2026-10-01'
+      fail: when > 0
+  - us16_relation_6:
+      name: RQ-007 BRONZE crm_client.pays relation 6
+      us16_relation_6 query: |
+        SELECT COALESCE(SUM(c.`pays` IS NULL OR (c.`pays` IS NOT NULL  AND BINARY c.`pays` NOT IN (SELECT BINARY `code_pays` FROM silver.ref_pays WHERE `code_pays` IS NOT NULL ))),0) FROM bronze.crm_client c WHERE c._batch_id='L-2026-10-01'
+      fail: when > 0

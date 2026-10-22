@@ -1,0 +1,184 @@
+{
+  "date_utc": "2026-10-22T17:38:27.027993+00:00",
+  "lot": "L-2026-10-01",
+  "relations": [
+    {
+      "testees": 100000,
+      "nuls": 0,
+      "orphelins": 1000,
+      "regle": "RQ-012",
+      "relation": "crm_contrat.souscripteur_id → bronze.crm_client.client_id",
+      "anomalies": 1000,
+      "taux_echec": 1.0,
+      "sql": "SELECT COUNT(*) testees, COALESCE(SUM(c.`souscripteur_id` IS NULL),0) nuls, COALESCE(SUM(c.`souscripteur_id` IS NOT NULL  AND c.`souscripteur_id` NOT IN (SELECT `client_id` FROM bronze.crm_client WHERE `client_id` IS NOT NULL AND _batch_id=:b)),0) orphelins FROM bronze.crm_contrat c WHERE c._batch_id=:b",
+      "soda": 1000.0
+    },
+    {
+      "testees": 100000,
+      "nuls": 0,
+      "orphelins": 40300,
+      "regle": "RQ-013 brut",
+      "relation": "crm_contrat.assure_id → bronze.crm_client.client_id",
+      "anomalies": 40300,
+      "taux_echec": 40.3,
+      "sql": "SELECT COUNT(*) testees, COALESCE(SUM(c.`assure_id` IS NULL),0) nuls, COALESCE(SUM(c.`assure_id` IS NOT NULL  AND c.`assure_id` NOT IN (SELECT `client_id` FROM bronze.crm_client WHERE `client_id` IS NOT NULL AND _batch_id=:b)),0) orphelins FROM bronze.crm_contrat c WHERE c._batch_id=:b",
+      "soda": 40300.0
+    },
+    {
+      "testees": 100000,
+      "nuls": 0,
+      "orphelins": 300,
+      "regle": "RQ-013",
+      "relation": "crm_contrat.assure_id → bronze.crm_client.client_id",
+      "anomalies": 300,
+      "taux_echec": 0.3,
+      "sql": "SELECT COUNT(*) testees, COALESCE(SUM(c.`assure_id` IS NULL),0) nuls, COALESCE(SUM(c.`assure_id` IS NOT NULL AND c.`assure_id`<>'0' AND c.`assure_id` NOT IN (SELECT `client_id` FROM bronze.crm_client WHERE `client_id` IS NOT NULL AND _batch_id=:b)),0) orphelins FROM bronze.crm_contrat c WHERE c._batch_id=:b",
+      "soda": 300.0
+    },
+    {
+      "testees": 100000,
+      "nuls": 0,
+      "orphelins": 200,
+      "regle": "RQ-011",
+      "relation": "crm_contrat.code_type → bronze.crm_type_contrat.code_type",
+      "anomalies": 200,
+      "taux_echec": 0.2,
+      "sql": "SELECT COUNT(*) testees, COALESCE(SUM(c.`code_type` IS NULL),0) nuls, COALESCE(SUM(c.`code_type` IS NOT NULL  AND c.`code_type` NOT IN (SELECT `code_type` FROM bronze.crm_type_contrat WHERE `code_type` IS NOT NULL AND _batch_id=:b)),0) orphelins FROM bronze.crm_contrat c WHERE c._batch_id=:b",
+      "soda": 200.0
+    },
+    {
+      "testees": 100000,
+      "nuls": 0,
+      "orphelins": 0,
+      "regle": "Lien sinistre",
+      "relation": "crm_sinistre.contrat_id → bronze.crm_contrat.contrat_id",
+      "anomalies": 0,
+      "taux_echec": 0.0,
+      "sql": "SELECT COUNT(*) testees, COALESCE(SUM(c.`contrat_id` IS NULL),0) nuls, COALESCE(SUM(c.`contrat_id` IS NOT NULL  AND c.`contrat_id` NOT IN (SELECT `contrat_id` FROM bronze.crm_contrat WHERE `contrat_id` IS NOT NULL AND _batch_id=:b)),0) orphelins FROM bronze.crm_sinistre c WHERE c._batch_id=:b",
+      "soda": 0.0
+    },
+    {
+      "testees": 45000,
+      "nuls": 0,
+      "orphelins": 0,
+      "regle": "Lien CIF",
+      "relation": "cif_compte.column1 → bronze.cif_clients.column0",
+      "anomalies": 0,
+      "taux_echec": 0.0,
+      "sql": "SELECT COUNT(*) testees, COALESCE(SUM(c.`column1` IS NULL),0) nuls, COALESCE(SUM(c.`column1` IS NOT NULL  AND c.`column1` NOT IN (SELECT `column0` FROM bronze.cif_clients WHERE `column0` IS NOT NULL AND _batch_id=:b)),0) orphelins FROM bronze.cif_compte c WHERE c._batch_id=:b",
+      "soda": 0.0
+    },
+    {
+      "testees": 100000,
+      "nuls": 0,
+      "orphelins": 3050,
+      "regle": "RQ-007",
+      "relation": "crm_client.pays → silver.ref_pays.code_pays",
+      "anomalies": 3050,
+      "taux_echec": 3.05,
+      "sql": "SELECT COUNT(*) testees, COALESCE(SUM(c.`pays` IS NULL),0) nuls, COALESCE(SUM(c.`pays` IS NOT NULL  AND BINARY c.`pays` NOT IN (SELECT BINARY `code_pays` FROM silver.ref_pays WHERE `code_pays` IS NOT NULL )),0) orphelins FROM bronze.crm_client c WHERE c._batch_id=:b",
+      "soda": 3050.0
+    }
+  ],
+  "pays": {
+    "testees": 100000,
+    "nuls": 0,
+    "vides_ou_blancs": 400,
+    "espaces_exterieurs": 0,
+    "corrigeables_par_trim": 0
+  },
+  "reference_pays": {
+    "n": 250,
+    "distincts": 250,
+    "nuls": 0
+  },
+  "fixture_rq007": [
+    {
+      "id": 1,
+      "ko": 1
+    },
+    {
+      "id": 2,
+      "ko": 0
+    },
+    {
+      "id": 3,
+      "ko": 1
+    },
+    {
+      "id": 4,
+      "ko": 1
+    },
+    {
+      "id": 5,
+      "ko": 1
+    },
+    {
+      "id": 6,
+      "ko": 1
+    },
+    {
+      "id": 7,
+      "ko": 1
+    },
+    {
+      "id": 8,
+      "ko": 1
+    }
+  ],
+  "soda": {
+    "code_retour": 2,
+    "checks": [
+      {
+        "nom": "RQ-012 BRONZE crm_contrat.souscripteur_id relation 0",
+        "resultat": "fail",
+        "valeurs": [
+          1000.0
+        ]
+      },
+      {
+        "nom": "RQ-013 brut BRONZE crm_contrat.assure_id relation 1",
+        "resultat": "fail",
+        "valeurs": [
+          40300.0
+        ]
+      },
+      {
+        "nom": "RQ-013 BRONZE crm_contrat.assure_id relation 2",
+        "resultat": "fail",
+        "valeurs": [
+          300.0
+        ]
+      },
+      {
+        "nom": "RQ-011 BRONZE crm_contrat.code_type relation 3",
+        "resultat": "fail",
+        "valeurs": [
+          200.0
+        ]
+      },
+      {
+        "nom": "US-16 BRONZE crm_sinistre.contrat_id relation 4",
+        "resultat": "pass",
+        "valeurs": [
+          0.0
+        ]
+      },
+      {
+        "nom": "US-16 BRONZE cif_compte.column1 relation 5",
+        "resultat": "pass",
+        "valeurs": [
+          0.0
+        ]
+      },
+      {
+        "nom": "RQ-007 BRONZE crm_client.pays relation 6",
+        "resultat": "fail",
+        "valeurs": [
+          3050.0
+        ]
+      }
+    ]
+  },
+  "concordance_sql_soda": true
+}

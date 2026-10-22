@@ -1,0 +1,7 @@
+[17:37:04] Soda Core 3.3.5
+[17:37:04] Scan summary:
+[17:37:04] 1/1 check PASSED:
+[17:37:04]     crm_contrat in bronze
+[17:37:04]       RQ-020 BRONZE demonstration pass [PASSED]
+[17:37:04] All is good. No failures. No warnings. No errors.
+Saving scan results to /home/jovyan/work/reports/s3/validation_us12_us16/pass.json

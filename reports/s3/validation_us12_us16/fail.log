@@ -1,0 +1,8 @@
+[17:37:08] Soda Core 3.3.5
+[17:37:08] Scan summary:
+[17:37:08] 1/1 check FAILED:
+[17:37:08]     crm_contrat in bronze
+[17:37:08]       RQ-020 BRONZE demonstration fail [FAILED]
+[17:37:08]         check_value: 100000
+[17:37:08] Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
+Saving scan results to /home/jovyan/work/reports/s3/validation_us12_us16/fail.json

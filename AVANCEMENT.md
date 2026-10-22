@@ -17,8 +17,8 @@ Mettez à jour ce tableau à chaque fin de séance (et dès qu'une story change 
 | S2 | US-11 | Lignes en échec | À faire | … | |
 | S2 | US-13 | Âge à la date de début du contrat | À faire | … | |
 | S2 | US-15 | Mesure de référence sur bronze | À faire | … | |
-| S3 | US-12 | Checks Soda, une source par couche | À faire | … | |
-| S3 | US-16 | Clés étrangères | À faire | … | |
+| S3 | US-12 | Checks Soda, une source par couche | Fait | notebooks/S3_01.ipynb ; reports/s3/validation_us12_us16/ ; livrables/S3_integrite_soda.md | Validation réexécutée : SQL/Soda concordants ; anomalies conservées |
+| S3 | US-16 | Clés étrangères | Fait | notebooks/S3_01.ipynb ; reports/s3/validation_us12_us16/ ; livrables/S3_integrite_soda.md | Validation réexécutée : SQL/Soda concordants ; anomalies conservées |
 | S3 | US-17 | Valeur sentinelle | À faire | … | |
 | S3 | US-18 | Statuts de personne | À faire | … | |
 | S3 | US-19 | Période de garantie | À faire | … | |

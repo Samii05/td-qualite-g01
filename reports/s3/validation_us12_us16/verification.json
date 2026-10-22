@@ -1,0 +1,36 @@
+{
+  "sections_collegues_notebook_identiques": true,
+  "sections_3_et_suivantes_livrable_identiques": true,
+  "cellules_python_us12_us16_executees": 4,
+  "erreurs_python": 0,
+  "controle_strict_s3": 0,
+  "git_diff_check": 0,
+  "fichiers_modifies_cette_intervention": [
+    "AVANCEMENT.md",
+    "livrables/S3_integrite_soda.md",
+    "notebooks/S3_01.ipynb",
+    "soda/checks/client_bronze_checks.yml"
+  ],
+  "fichiers_crees_cette_intervention": [
+    "pipelines/validation_us12_us16.py",
+    "soda/checks/us16_relations_checks.yml",
+    "reports/s3/validation_us12_us16/client.json",
+    "reports/s3/validation_us12_us16/client.log",
+    "reports/s3/validation_us12_us16/contrat.json",
+    "reports/s3/validation_us12_us16/contrat.log",
+    "reports/s3/validation_us12_us16/fail.json",
+    "reports/s3/validation_us12_us16/fail.log",
+    "reports/s3/validation_us12_us16/pass.json",
+    "reports/s3/validation_us12_us16/pass.log",
+    "reports/s3/validation_us12_us16/relations.json",
+    "reports/s3/validation_us12_us16/relations.log",
+    "reports/s3/validation_us12_us16/sinistre.json",
+    "reports/s3/validation_us12_us16/sinistre.log",
+    "reports/s3/validation_us12_us16/us12.json",
+    "reports/s3/validation_us12_us16/us16.json",
+    "reports/s3/validation_us12_us16/warn.json",
+    "reports/s3/validation_us12_us16/warn.log",
+    "reports/s3/validation_us12_us16/verification.json"
+  ],
+  "note": "Fichiers déjà présents mais non suivis par Git distingués des fichiers créés pendant cette intervention."
+}

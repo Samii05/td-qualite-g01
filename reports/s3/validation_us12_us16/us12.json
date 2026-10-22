@@ -1,0 +1,456 @@
+{
+  "date_utc": "2026-10-22T17:37:16.919175+00:00",
+  "sources": {
+    "crm": {
+      "connexion": "OK",
+      "tables": 4
+    },
+    "bronze": {
+      "connexion": "OK",
+      "tables": 7
+    },
+    "silver": {
+      "connexion": "OK",
+      "tables": 4
+    },
+    "gold": {
+      "connexion": "OK",
+      "tables": 2
+    }
+  },
+  "volumes": {
+    "crm_client": 100000,
+    "crm_contrat": 100000,
+    "crm_sinistre": 100000,
+    "crm_type_contrat": 12,
+    "cif_clients": 40000,
+    "cif_compte": 45000,
+    "cif_pays": 250
+  },
+  "schema": {
+    "crm_client": [
+      "bronze_row_id",
+      "client_id",
+      "type_personne",
+      "nom",
+      "prenom",
+      "raison_sociale",
+      "date_naissance",
+      "adresse",
+      "cp",
+      "ville",
+      "pays",
+      "telephone",
+      "email",
+      "date_creation",
+      "_batch_id",
+      "_source_system",
+      "_ingested_at",
+      "_row_hash"
+    ],
+    "crm_contrat": [
+      "bronze_row_id",
+      "contrat_id",
+      "souscripteur_id",
+      "assure_id",
+      "code_type",
+      "date_debut",
+      "date_fin",
+      "duree_garantie_mois",
+      "prime_annuelle",
+      "date_derniere_cotisation",
+      "_batch_id",
+      "_source_system",
+      "_ingested_at",
+      "_row_hash"
+    ],
+    "crm_sinistre": [
+      "bronze_row_id",
+      "sinistre_id",
+      "contrat_id",
+      "date_survenance",
+      "date_declaration",
+      "type_sinistre",
+      "montant_estime",
+      "adresse_sinistre",
+      "cp_sinistre",
+      "ville_sinistre",
+      "canal_saisie",
+      "_batch_id",
+      "_source_system",
+      "_ingested_at",
+      "_row_hash"
+    ],
+    "crm_type_contrat": [
+      "bronze_row_id",
+      "code_type",
+      "libelle",
+      "branche",
+      "_batch_id",
+      "_source_system",
+      "_ingested_at",
+      "_row_hash"
+    ],
+    "cif_clients": [
+      "bronze_row_id",
+      "column0",
+      "column1",
+      "column2",
+      "column3",
+      "column4",
+      "column5",
+      "column6",
+      "column7",
+      "column8",
+      "column9",
+      "_batch_id",
+      "_source_system",
+      "_ingested_at",
+      "_row_hash"
+    ],
+    "cif_compte": [
+      "bronze_row_id",
+      "column0",
+      "column1",
+      "column2",
+      "column3",
+      "_batch_id",
+      "_source_system",
+      "_ingested_at",
+      "_row_hash"
+    ],
+    "cif_pays": [
+      "bronze_row_id",
+      "code_pays",
+      "nom_pays",
+      "_batch_id",
+      "_source_system",
+      "_ingested_at",
+      "_row_hash"
+    ]
+  },
+  "scans": {
+    "client": {
+      "code_retour": 2,
+      "checks": [
+        {
+          "nom": "RQ-003 telephone du souscripteur renseigne BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            5989
+          ]
+        },
+        {
+          "nom": "RQ-005 code postal sur 5 chiffres (France) BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            1456
+          ]
+        },
+        {
+          "nom": "RQ-007 pays dans la liste de reference BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            3050
+          ]
+        },
+        {
+          "nom": "RQ-015 prospect sans crm_contrat BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            479
+          ]
+        },
+        {
+          "nom": "RQ-020 BRONZE duplicate_count(client_id) = 0",
+          "resultat": "pass",
+          "valeurs": [
+            0
+          ]
+        },
+        {
+          "nom": "RQ-020 BRONZE missing_count(client_id) = 0",
+          "resultat": "pass",
+          "valeurs": [
+            0
+          ]
+        },
+        {
+          "nom": "RQ-009 type de personne autorise BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            200
+          ]
+        }
+      ]
+    },
+    "contrat": {
+      "code_retour": 2,
+      "checks": [
+        {
+          "nom": "RQ-001 date de fin posterieure a la date de debut BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            800
+          ]
+        },
+        {
+          "nom": "RQ-011 type de crm_contrat connu BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            200
+          ]
+        },
+        {
+          "nom": "RQ-012 souscripteur existant BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            1000
+          ]
+        },
+        {
+          "nom": "RQ-018 BRONZE ecart definitions initiales",
+          "resultat": "fail",
+          "valeurs": [
+            11878.0
+          ]
+        },
+        {
+          "nom": "RQ-020 BRONZE duplicate_count(contrat_id) = 0",
+          "resultat": "pass",
+          "valeurs": [
+            0
+          ]
+        },
+        {
+          "nom": "RQ-020 BRONZE missing_count(contrat_id) = 0",
+          "resultat": "pass",
+          "valeurs": [
+            0
+          ]
+        },
+        {
+          "nom": "RQ-010 duree de garantie autorisee BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            600
+          ]
+        },
+        {
+          "nom": "RQ-013 assure existant (sentinelle 0 exclue) BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            300
+          ]
+        }
+      ]
+    },
+    "sinistre": {
+      "code_retour": 2,
+      "checks": [
+        {
+          "nom": "RQ-017 crm_sinistre hors periode de garantie BRONZE",
+          "resultat": "fail",
+          "valeurs": [
+            1200
+          ]
+        },
+        {
+          "nom": "RQ-014 BRONZE taux erreur BAN",
+          "resultat": "fail",
+          "valeurs": [
+            12.1
+          ]
+        },
+        {
+          "nom": "RQ-020 BRONZE sinistre identifiant renseigne",
+          "resultat": "pass",
+          "valeurs": [
+            0
+          ]
+        },
+        {
+          "nom": "RQ-020 identifiant de crm_sinistre unique BRONZE",
+          "resultat": "pass",
+          "valeurs": [
+            0
+          ]
+        },
+        {
+          "nom": "RQ-014 code postal de crm_sinistre sur 5 chiffres BRONZE",
+          "resultat": "pass",
+          "valeurs": [
+            0
+          ]
+        },
+        {
+          "nom": "RQ-014 BRONZE adresse sinistre renseignee",
+          "resultat": "pass",
+          "valeurs": [
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "demonstrations": {
+    "pass": {
+      "code_retour": 0,
+      "checks": [
+        {
+          "nom": "RQ-020 BRONZE demonstration pass",
+          "resultat": "pass",
+          "valeurs": [
+            100000
+          ]
+        }
+      ]
+    },
+    "warn": {
+      "code_retour": 1,
+      "checks": [
+        {
+          "nom": "RQ-020 BRONZE demonstration warn",
+          "resultat": "warn",
+          "valeurs": [
+            100000
+          ]
+        }
+      ]
+    },
+    "fail": {
+      "code_retour": 2,
+      "checks": [
+        {
+          "nom": "RQ-020 BRONZE demonstration fail",
+          "resultat": "fail",
+          "valeurs": [
+            100000
+          ]
+        }
+      ]
+    }
+  },
+  "synthese": {
+    "pass": 8,
+    "warn": 0,
+    "fail": 13
+  },
+  "signatures_avant": {
+    "crm.client": {
+      "n": 100000,
+      "crc": 214850851776788
+    },
+    "crm.contrat": {
+      "n": 100000,
+      "crc": 215317851600096
+    },
+    "crm.sinistre": {
+      "n": 100000,
+      "crc": 214422827713770
+    },
+    "crm.type_contrat": {
+      "n": 12,
+      "crc": 31384354676
+    },
+    "cif.clients": {
+      "n": 40000,
+      "crc": 85859452799416
+    },
+    "cif.compte": {
+      "n": 45000,
+      "crc": 97091387399998
+    },
+    "cif.pays": {
+      "n": 250,
+      "crc": 551645271640
+    },
+    "bronze.crm_client": {
+      "n": 100000,
+      "crc": 214629213869087
+    },
+    "bronze.crm_contrat": {
+      "n": 100000,
+      "crc": 214259906564350
+    },
+    "bronze.crm_sinistre": {
+      "n": 100000,
+      "crc": 213596884004405
+    },
+    "bronze.crm_type_contrat": {
+      "n": 12,
+      "crc": 30966839218
+    },
+    "bronze.cif_clients": {
+      "n": 40000,
+      "crc": 86059139177476
+    },
+    "bronze.cif_compte": {
+      "n": 45000,
+      "crc": 97093822202824
+    },
+    "bronze.cif_pays": {
+      "n": 250,
+      "crc": 555816247089
+    }
+  },
+  "signatures_apres": {
+    "crm.client": {
+      "n": 100000,
+      "crc": 214850851776788
+    },
+    "crm.contrat": {
+      "n": 100000,
+      "crc": 215317851600096
+    },
+    "crm.sinistre": {
+      "n": 100000,
+      "crc": 214422827713770
+    },
+    "crm.type_contrat": {
+      "n": 12,
+      "crc": 31384354676
+    },
+    "cif.clients": {
+      "n": 40000,
+      "crc": 85859452799416
+    },
+    "cif.compte": {
+      "n": 45000,
+      "crc": 97091387399998
+    },
+    "cif.pays": {
+      "n": 250,
+      "crc": 551645271640
+    },
+    "bronze.crm_client": {
+      "n": 100000,
+      "crc": 214629213869087
+    },
+    "bronze.crm_contrat": {
+      "n": 100000,
+      "crc": 214259906564350
+    },
+    "bronze.crm_sinistre": {
+      "n": 100000,
+      "crc": 213596884004405
+    },
+    "bronze.crm_type_contrat": {
+      "n": 12,
+      "crc": 30966839218
+    },
+    "bronze.cif_clients": {
+      "n": 40000,
+      "crc": 86059139177476
+    },
+    "bronze.cif_compte": {
+      "n": 45000,
+      "crc": 97093822202824
+    },
+    "bronze.cif_pays": {
+      "n": 250,
+      "crc": 555816247089
+    }
+  },
+  "donnees_inchangees": true
+}

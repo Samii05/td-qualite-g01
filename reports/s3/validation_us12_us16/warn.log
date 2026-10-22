@@ -1,0 +1,8 @@
+[17:37:06] Soda Core 3.3.5
+[17:37:07] Scan summary:
+[17:37:07] 1/1 check WARNED:
+[17:37:07]     crm_contrat in bronze
+[17:37:07]       RQ-020 BRONZE demonstration warn [WARNED]
+[17:37:07]         check_value: 100000
+[17:37:07] Only 1 warning. 0 failure. 0 errors. 0 pass.
+Saving scan results to /home/jovyan/work/reports/s3/validation_us12_us16/warn.json

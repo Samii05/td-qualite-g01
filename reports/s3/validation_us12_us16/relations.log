@@ -1,0 +1,20 @@
+[17:37:50] Soda Core 3.3.5
+[17:38:26] Scan summary:
+[17:38:26] 2/7 checks PASSED:
+[17:38:26]     crm_client in bronze
+[17:38:26]       US-16 BRONZE crm_sinistre.contrat_id relation 4 [PASSED]
+[17:38:26]       US-16 BRONZE cif_compte.column1 relation 5 [PASSED]
+[17:38:26] 5/7 checks FAILED:
+[17:38:26]     crm_client in bronze
+[17:38:26]       RQ-012 BRONZE crm_contrat.souscripteur_id relation 0 [FAILED]
+[17:38:26]         check_value: 1000.0
+[17:38:26]       RQ-013 brut BRONZE crm_contrat.assure_id relation 1 [FAILED]
+[17:38:26]         check_value: 40300.0
+[17:38:26]       RQ-013 BRONZE crm_contrat.assure_id relation 2 [FAILED]
+[17:38:26]         check_value: 300.0
+[17:38:26]       RQ-011 BRONZE crm_contrat.code_type relation 3 [FAILED]
+[17:38:26]         check_value: 200.0
+[17:38:26]       RQ-007 BRONZE crm_client.pays relation 6 [FAILED]
+[17:38:26]         check_value: 3050.0
+[17:38:26] Oops! 5 failures. 0 warnings. 0 errors. 2 pass.
+Saving scan results to /home/jovyan/work/reports/s3/validation_us12_us16/relations.json
