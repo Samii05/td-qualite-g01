@@ -100,16 +100,16 @@ fluent_datasources:
   assurconnect:
     type: pandas
     assets:
-      crm_client:
+      silver_client:
         type: dataframe
         batch_metadata: {}
-      crm_contrat:
+      silver_contrat:
         type: dataframe
         batch_metadata: {}
-      crm_sinistre:
+      silver_sinistre:
         type: dataframe
         batch_metadata: {}
-      cif_clients:
+      silver_client_cif:
         type: dataframe
         batch_metadata: {}
 notebooks:
