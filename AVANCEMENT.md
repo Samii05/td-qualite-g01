@@ -27,9 +27,9 @@ Mettez à jour ce tableau à chaque fin de séance (et dès qu'une story change 
 | S4 | US-22 | Quarantaine | À faire | … | |
 | S4 | US-23 | Porte S : re-mesurer sur silver | À faire | … | |
 | S4 | US-24 | Dédoublonnage | À faire | … | |
-| S4 | US-25 | Golden record | À faire | … | |
+| S4 | US-25 | Golden record | Fait | notebooks/S4_01.ipynb ; pipelines/s4_us25_us28.py ; reports/s4/us25_us28/ | Meunier : 4/4 identifiants, idempotence vérifiée ; survie proposée |
 | S4 | US-27 | Gold et client actif unique | À faire | … | |
-| S4 | US-28 | Traçabilité de trois données | À faire | … | |
+| S4 | US-28 | Traçabilité de trois données | En cours | notebooks/S4_01.ipynb ; pipelines/s4_us25_us28.py ; reports/s4/us25_us28/ | 1 trace Gold complète ; 2 traces partielles, dépendances US-24/27 |
 | S5 | US-29 | Historique des mesures | À faire | … | |
 | S5 | US-30 | Courbes d'évolution | À faire | … | |
 | S5 | US-31 | Certificat de qualité | À faire | … | |

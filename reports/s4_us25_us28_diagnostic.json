@@ -1,0 +1,335 @@
+{
+  "tables": [
+    {
+      "schema": "bronze",
+      "table": "cif_clients",
+      "lignes": 40000
+    },
+    {
+      "schema": "bronze",
+      "table": "cif_compte",
+      "lignes": 45000
+    },
+    {
+      "schema": "bronze",
+      "table": "cif_pays",
+      "lignes": 250
+    },
+    {
+      "schema": "bronze",
+      "table": "crm_client",
+      "lignes": 100000
+    },
+    {
+      "schema": "bronze",
+      "table": "crm_contrat",
+      "lignes": 100000
+    },
+    {
+      "schema": "bronze",
+      "table": "crm_sinistre",
+      "lignes": 100000
+    },
+    {
+      "schema": "bronze",
+      "table": "crm_type_contrat",
+      "lignes": 12
+    },
+    {
+      "schema": "gold",
+      "table": "client_unique",
+      "lignes": 0
+    },
+    {
+      "schema": "gold",
+      "table": "xref_identifiants",
+      "lignes": 0
+    },
+    {
+      "schema": "silver",
+      "table": "client",
+      "lignes": 0
+    },
+    {
+      "schema": "silver",
+      "table": "ref_ban",
+      "lignes": 22856
+    },
+    {
+      "schema": "silver",
+      "table": "ref_pays",
+      "lignes": 250
+    },
+    {
+      "schema": "silver",
+      "table": "ref_postal",
+      "lignes": 178
+    }
+  ],
+  "schemas": {
+    "silver.client": [
+      {
+        "column_name": "silver_row_id",
+        "column_type": "bigint(20)"
+      },
+      {
+        "column_name": "bronze_row_id",
+        "column_type": "bigint(20)"
+      },
+      {
+        "column_name": "source_systeme",
+        "column_type": "varchar(20)"
+      },
+      {
+        "column_name": "source_id",
+        "column_type": "varchar(20)"
+      },
+      {
+        "column_name": "type_personne",
+        "column_type": "enum('prospect','souscripteur','assure')"
+      },
+      {
+        "column_name": "identite_normalisee",
+        "column_type": "varchar(150)"
+      },
+      {
+        "column_name": "prenom_normalise",
+        "column_type": "varchar(80)"
+      },
+      {
+        "column_name": "date_naissance",
+        "column_type": "date"
+      },
+      {
+        "column_name": "adresse_normalisee",
+        "column_type": "varchar(255)"
+      },
+      {
+        "column_name": "cp",
+        "column_type": "varchar(10)"
+      },
+      {
+        "column_name": "ville_normalisee",
+        "column_type": "varchar(100)"
+      },
+      {
+        "column_name": "pays_iso",
+        "column_type": "char(2)"
+      },
+      {
+        "column_name": "telephone_normalise",
+        "column_type": "varchar(20)"
+      },
+      {
+        "column_name": "email_normalise",
+        "column_type": "varchar(150)"
+      },
+      {
+        "column_name": "statut_qualite",
+        "column_type": "enum('VALIDE','A_SURVEILLER')"
+      },
+      {
+        "column_name": "_batch_id",
+        "column_type": "varchar(20)"
+      },
+      {
+        "column_name": "_processed_at",
+        "column_type": "datetime"
+      }
+    ],
+    "silver.ref_ban": [
+      {
+        "column_name": "id_ban",
+        "column_type": "char(9)"
+      },
+      {
+        "column_name": "numero",
+        "column_type": "smallint(6)"
+      },
+      {
+        "column_name": "voie",
+        "column_type": "varchar(80)"
+      },
+      {
+        "column_name": "code_postal",
+        "column_type": "char(5)"
+      },
+      {
+        "column_name": "commune",
+        "column_type": "varchar(80)"
+      }
+    ],
+    "silver.ref_pays": [
+      {
+        "column_name": "code_pays",
+        "column_type": "char(2)"
+      },
+      {
+        "column_name": "nom_pays",
+        "column_type": "varchar(80)"
+      }
+    ],
+    "silver.ref_postal": [
+      {
+        "column_name": "code_postal",
+        "column_type": "char(5)"
+      },
+      {
+        "column_name": "commune",
+        "column_type": "varchar(80)"
+      }
+    ],
+    "gold.client_unique": [
+      {
+        "column_name": "cli_id",
+        "column_type": "char(10)"
+      },
+      {
+        "column_name": "nom_reference",
+        "column_type": "varchar(150)"
+      },
+      {
+        "column_name": "date_naissance",
+        "column_type": "date"
+      },
+      {
+        "column_name": "cp",
+        "column_type": "varchar(10)"
+      },
+      {
+        "column_name": "ville",
+        "column_type": "varchar(100)"
+      },
+      {
+        "column_name": "pays_iso",
+        "column_type": "char(2)"
+      },
+      {
+        "column_name": "telephone",
+        "column_type": "varchar(20)"
+      },
+      {
+        "column_name": "email",
+        "column_type": "varchar(150)"
+      },
+      {
+        "column_name": "nb_identifiants_source",
+        "column_type": "int(11)"
+      },
+      {
+        "column_name": "statut_client",
+        "column_type": "enum('PROSPECT','ASSURE','ACTIF','INACTIF')"
+      },
+      {
+        "column_name": "_batch_id",
+        "column_type": "varchar(20)"
+      }
+    ],
+    "gold.xref_identifiants": [
+      {
+        "column_name": "cli_id",
+        "column_type": "char(10)"
+      },
+      {
+        "column_name": "source_systeme",
+        "column_type": "varchar(20)"
+      },
+      {
+        "column_name": "source_id",
+        "column_type": "varchar(20)"
+      },
+      {
+        "column_name": "bronze_row_id",
+        "column_type": "bigint(20)"
+      },
+      {
+        "column_name": "silver_row_id",
+        "column_type": "bigint(20)"
+      }
+    ]
+  },
+  "meunier_silver": [],
+  "meunier_bronze_crm": [
+    {
+      "bronze_row_id": 34450,
+      "client_id": "A-4471",
+      "type_personne": "souscripteur",
+      "nom": null,
+      "prenom": null,
+      "raison_sociale": "Société Meunier SARL",
+      "date_naissance": null,
+      "adresse": "27 rue Pasteur",
+      "cp": "69003",
+      "ville": "Lyon",
+      "pays": "FR",
+      "telephone": "0478473441",
+      "email": "contact@meunier-sarl.fr",
+      "date_creation": "2013-12-06",
+      "_batch_id": "L-2026-10-01",
+      "_source_system": "crm",
+      "_ingested_at": "2026-10-22 16:18:17",
+      "_row_hash": "d1258140c6d07445"
+    },
+    {
+      "bronze_row_id": 73793,
+      "client_id": "H-9012",
+      "type_personne": "souscripteur",
+      "nom": null,
+      "prenom": null,
+      "raison_sociale": "MEUNIER SARL",
+      "date_naissance": null,
+      "adresse": "27 rue Pasteur",
+      "cp": "69003",
+      "ville": "Lyon",
+      "pays": "FR",
+      "telephone": "0409980316",
+      "email": null,
+      "date_creation": "2013-05-30",
+      "_batch_id": "L-2026-10-01",
+      "_source_system": "crm",
+      "_ingested_at": "2026-10-22 16:18:28",
+      "_row_hash": "0b3842bd8371cbe7"
+    },
+    {
+      "bronze_row_id": 88069,
+      "client_id": "S-2208",
+      "type_personne": "souscripteur",
+      "nom": null,
+      "prenom": null,
+      "raison_sociale": "Sté Meunier S.A.R.L.",
+      "date_naissance": null,
+      "adresse": "27 rue Pasteur",
+      "cp": "69003",
+      "ville": "Lyon",
+      "pays": "FR",
+      "telephone": "0417379714",
+      "email": "compta@meunier-sarl.fr",
+      "date_creation": "2013-07-29",
+      "_batch_id": "L-2026-10-01",
+      "_source_system": "crm",
+      "_ingested_at": "2026-10-22 16:18:31",
+      "_row_hash": "4bece9d081c7f2c1"
+    }
+  ],
+  "meunier_bronze_cif": [
+    {
+      "bronze_row_id": 16620,
+      "column0": "K471226",
+      "column1": "SOCIETE MEUNIER S.A.R.L.",
+      "column2": null,
+      "column3": null,
+      "column4": "27 RUE PASTEUR",
+      "column5": "69003",
+      "column6": "LYON",
+      "column7": "FR",
+      "column8": "0478473441",
+      "column9": "contact@meunier-sarl.fr",
+      "_batch_id": "L-2026-10-01",
+      "_source_system": "cif",
+      "_ingested_at": "2026-10-22 16:22:03",
+      "_row_hash": "9901a5eabd4ed3fd"
+    }
+  ],
+  "gold_target": [],
+  "xref_target": []
+}

@@ -1,0 +1,273 @@
+{
+  "membres": [
+    {
+      "silver_row_id": 115970,
+      "bronze_row_id": 16620,
+      "source_systeme": "cif",
+      "source_id": "K471226",
+      "type_personne": null,
+      "identite_normalisee": "MEUNIER SARL",
+      "prenom_normalise": null,
+      "date_naissance": null,
+      "adresse_normalisee": "27 RUE PASTEUR",
+      "cp": "69003",
+      "ville_normalisee": "LYON",
+      "pays_iso": "FR",
+      "telephone_normalise": "0478473441",
+      "email_normalise": "contact@meunier-sarl.fr",
+      "statut_qualite": "VALIDE",
+      "_batch_id": "L-2026-10-01",
+      "_processed_at": "2026-11-07 14:23:29"
+    },
+    {
+      "silver_row_id": 34219,
+      "bronze_row_id": 34450,
+      "source_systeme": "crm",
+      "source_id": "A-4471",
+      "type_personne": "souscripteur",
+      "identite_normalisee": "MEUNIER SARL",
+      "prenom_normalise": null,
+      "date_naissance": null,
+      "adresse_normalisee": "27 RUE PASTEUR",
+      "cp": "69003",
+      "ville_normalisee": "LYON",
+      "pays_iso": "FR",
+      "telephone_normalise": "0478473441",
+      "email_normalise": "contact@meunier-sarl.fr",
+      "statut_qualite": "VALIDE",
+      "_batch_id": "L-2026-10-01",
+      "_processed_at": "2026-11-07 14:23:17"
+    },
+    {
+      "silver_row_id": 73325,
+      "bronze_row_id": 73793,
+      "source_systeme": "crm",
+      "source_id": "H-9012",
+      "type_personne": "souscripteur",
+      "identite_normalisee": "MEUNIER SARL",
+      "prenom_normalise": null,
+      "date_naissance": null,
+      "adresse_normalisee": "27 RUE PASTEUR",
+      "cp": "69003",
+      "ville_normalisee": "LYON",
+      "pays_iso": "FR",
+      "telephone_normalise": "0409980316",
+      "email_normalise": null,
+      "statut_qualite": "VALIDE",
+      "_batch_id": "L-2026-10-01",
+      "_processed_at": "2026-11-07 14:23:23"
+    },
+    {
+      "silver_row_id": 87512,
+      "bronze_row_id": 88069,
+      "source_systeme": "crm",
+      "source_id": "S-2208",
+      "type_personne": "souscripteur",
+      "identite_normalisee": "MEUNIER SARL",
+      "prenom_normalise": null,
+      "date_naissance": null,
+      "adresse_normalisee": "27 RUE PASTEUR",
+      "cp": "69003",
+      "ville_normalisee": "LYON",
+      "pays_iso": "FR",
+      "telephone_normalise": "0417379714",
+      "email_normalise": "compta@meunier-sarl.fr",
+      "statut_qualite": "VALIDE",
+      "_batch_id": "L-2026-10-01",
+      "_processed_at": "2026-11-07 14:23:24"
+    }
+  ],
+  "golden_record_propose": {
+    "cli_id": "CLI-000482",
+    "nom_reference": "MEUNIER SARL",
+    "date_naissance": null,
+    "cp": "69003",
+    "ville": "LYON",
+    "pays_iso": "FR",
+    "telephone": "0478473441",
+    "email": "contact@meunier-sarl.fr",
+    "nb_identifiants_source": 4,
+    "statut_client": "ACTIF",
+    "_batch_id": "L-2026-10-01"
+  },
+  "adresse_survivante": "27 RUE PASTEUR",
+  "regles_survie_proposees": {
+    "nom_reference": "Identité normalisée commune aux quatre sources ; donneur CIF",
+    "adresse": "Adresse complète commune aux quatre sources ; donneur CIF, exposée dans v_us25_meunier car absente du schéma client_unique",
+    "cp, ville, pays_iso": "Triplet cohérent pris ensemble sur le CIF ; aucune adresse recomposée entre sources",
+    "telephone": "CIF non nul prioritaire, confirmé par A-4471 ; deux autres numéros conservés dans les preuves, sans prétendre savoir lequel est le plus récent",
+    "email": "CIF non nul prioritaire, confirmé par A-4471 ; compta@... est une autre adresse, non une preuve de fraîcheur",
+    "date_naissance": "NULL : société, aucune naissance inventée",
+    "nb_identifiants_source": "Nombre réel des quatre correspondances distinctes",
+    "statut_client": "CD-001 sur le même contrat Silver : en cours au 01/10/2026 et cotisation depuis 01/07/2026"
+  },
+  "donneur": {
+    "source": "cif",
+    "id": "K471226",
+    "silver_row_id": 115970,
+    "bronze_row_id": 16620
+  },
+  "validation_data_owner": "Non présumée : politique technique proposée pour ce cas explicitement demandé",
+  "insertions": {
+    "client_unique": 1,
+    "xref_identifiants": 4
+  },
+  "golden_record": {
+    "cli_id": "CLI-000482",
+    "nom_reference": "MEUNIER SARL",
+    "date_naissance": null,
+    "cp": "69003",
+    "ville": "LYON",
+    "pays_iso": "FR",
+    "telephone": "0478473441",
+    "email": "contact@meunier-sarl.fr",
+    "nb_identifiants_source": 4,
+    "statut_client": "ACTIF",
+    "_batch_id": "L-2026-10-01"
+  },
+  "vue": [
+    {
+      "cli_id": "CLI-000482",
+      "nom_reference": "MEUNIER SARL",
+      "date_naissance": null,
+      "cp": "69003",
+      "ville": "LYON",
+      "pays_iso": "FR",
+      "telephone": "0478473441",
+      "email": "contact@meunier-sarl.fr",
+      "nb_identifiants_source": 4,
+      "statut_client": "ACTIF",
+      "_batch_id": "L-2026-10-01",
+      "adresse_survivante": "27 RUE PASTEUR",
+      "source_survivante": "K471226",
+      "silver_row_id_survivant": 115970,
+      "bronze_row_id_survivant": 16620
+    }
+  ],
+  "xref": [
+    {
+      "cli_id": "CLI-000482",
+      "source_systeme": "cif",
+      "source_id": "K471226",
+      "bronze_row_id": 16620,
+      "silver_row_id": 115970
+    },
+    {
+      "cli_id": "CLI-000482",
+      "source_systeme": "crm",
+      "source_id": "A-4471",
+      "bronze_row_id": 34450,
+      "silver_row_id": 34219
+    },
+    {
+      "cli_id": "CLI-000482",
+      "source_systeme": "crm",
+      "source_id": "H-9012",
+      "bronze_row_id": 73793,
+      "silver_row_id": 73325
+    },
+    {
+      "cli_id": "CLI-000482",
+      "source_systeme": "crm",
+      "source_id": "S-2208",
+      "bronze_row_id": 88069,
+      "silver_row_id": 87512
+    }
+  ],
+  "couverture_identifiants_pct": 100,
+  "doublons": 0,
+  "statut": "TERMINÉE",
+  "relance_insertions": {
+    "client_unique": 0,
+    "xref_identifiants": 0
+  },
+  "sources_bronze_silver_inchanges": true,
+  "signatures": {
+    "crm.client": {
+      "n": 100000,
+      "crc": 214850851776788
+    },
+    "crm.contrat": {
+      "n": 100000,
+      "crc": 215317851600096
+    },
+    "crm.sinistre": {
+      "n": 100000,
+      "crc": 214422827713770
+    },
+    "crm.type_contrat": {
+      "n": 12,
+      "crc": 31384354676
+    },
+    "cif.clients": {
+      "n": 40000,
+      "crc": 85859452799416
+    },
+    "cif.compte": {
+      "n": 45000,
+      "crc": 97091387399998
+    },
+    "cif.pays": {
+      "n": 250,
+      "crc": 551645271640
+    },
+    "bronze.cif_clients": {
+      "n": 40000,
+      "crc": 86059139177476
+    },
+    "bronze.cif_compte": {
+      "n": 45000,
+      "crc": 97093822202824
+    },
+    "bronze.cif_pays": {
+      "n": 250,
+      "crc": 555816247089
+    },
+    "bronze.crm_client": {
+      "n": 100000,
+      "crc": 214629213869087
+    },
+    "bronze.crm_contrat": {
+      "n": 100000,
+      "crc": 214259906564350
+    },
+    "bronze.crm_sinistre": {
+      "n": 100000,
+      "crc": 213596884004405
+    },
+    "bronze.crm_type_contrat": {
+      "n": 12,
+      "crc": 30966839218
+    },
+    "silver.client": {
+      "n": 139350,
+      "crc": 299615642493949
+    },
+    "silver.contrat": {
+      "n": 98600,
+      "crc": 211090600737973
+    },
+    "silver.ref_ban": {
+      "n": 22856,
+      "crc": 48999847587997
+    },
+    "silver.ref_pays": {
+      "n": 250,
+      "crc": 551645271640
+    },
+    "silver.ref_postal": {
+      "n": 178,
+      "crc": 378857660005
+    },
+    "silver.sinistre": {
+      "n": 100000,
+      "crc": 214923996060840
+    },
+    "silver.type_contrat": {
+      "n": 12,
+      "crc": 31384354676
+    }
+  },
+  "gold_hors_cible_inchange": true,
+  "date_utc": "2026-11-07T14:27:16.163401+00:00"
+}

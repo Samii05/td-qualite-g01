@@ -1,0 +1,34 @@
+{
+  "us25_validation": [
+    [
+      {
+        "cli_id": "CLI-000482",
+        "nom_reference": "MEUNIER SARL",
+        "date_naissance": null,
+        "cp": "69003",
+        "ville": "LYON",
+        "pays_iso": "FR",
+        "telephone": "0478473441",
+        "email": "contact@meunier-sarl.fr",
+        "nb_identifiants_source": 4,
+        "statut_client": "ACTIF",
+        "_batch_id": "L-2026-10-01",
+        "adresse_survivante": "27 RUE PASTEUR",
+        "source_survivante": "K471226",
+        "silver_row_id_survivant": 115970,
+        "bronze_row_id_survivant": 16620
+      }
+    ],
+    [
+      {
+        "identifiants_attendus": 4,
+        "identifiants_retrouves": "4",
+        "couverture_pct": "100.00000"
+      }
+    ],
+    [],
+    []
+  ],
+  "notebook_cellules_collegues_conservees": true,
+  "erreurs_python": 0
+}

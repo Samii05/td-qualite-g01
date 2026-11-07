@@ -1,0 +1,17 @@
+{
+  "notebook_cellules_collegues_conservees": 18,
+  "cellules_ajoutees_executees": 3,
+  "erreurs_python": 0,
+  "us24_et_us27_documentation_inchangees": true,
+  "avancement_autres_us_inchange": true,
+  "signature_sources_bronze_silver_inchangee": true,
+  "gold_hors_meunier_inchange": true,
+  "couverture_identifiants_pct": 100,
+  "doublons": 0,
+  "us25_statut": "TERMINÉE",
+  "us28_statut": "PARTIELLE",
+  "git_diff_check": 0,
+  "docker_compose_inchange": true,
+  "aucun_commit_apres_fusion": true,
+  "index_git_vide": true
+}

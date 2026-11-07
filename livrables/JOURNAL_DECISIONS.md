@@ -15,3 +15,11 @@ Une ligne par décision de seuil, de sévérité, de définition ou de règle de
 | 9 | 31/10/2026 | S3 | RQ-017 (sinistre hors garantie) | Proposée : les 344 sinistres couverts par un autre contrat du même souscripteur sont à rattacher au bon contrat ; les 856 autres sont examinés comme de vraies anomalies | 1 200 sinistres hors période (480 avant le début, 720 après la fin), dont 344 faux positifs probables (renouvellement) ; notebook S3, US-19 | Data Steward | Traiter les 1 200 sinistres comme des sinistres sans garantie |
 
 Ajoutez des lignes autant que nécessaire. Exemples de décisions attendues : sévérité d'une règle, seuil d'avertissement, définition unique du client actif, convention de la valeur sentinelle, seuils de rapprochement, règle de survie par attribut, seuil de la porte G.
+
+## Proposition technique US-25 — Mohamed, 07/11/2026
+
+| Référence | Objet | Proposition appliquée au cas du TD | Preuve | Responsabilité / validation | Limite |
+|---|---|---|---|---|---|
+| US25-20261107 | Survie Meunier | CIF K471226 prioritaire non nul ; identité et adresse communes ; téléphone et contact confirmés par A-4471 ; statut CD-001 sur Silver | CLI-000482, quatre xref, couverture 100 %, relance sans insertion ; reports/s4/us25_us28/ | Ingénieur qualité : mise en œuvre technique ; Data Owner : politique de survie proposée, approbation non présumée | Pas d'horodatage d'attribut pour prouver la fraîcheur ; pas de fusion générale de tous les homonymes |
+
+US-28 reste partielle : le CLI du client au CP restauré et la table Gold des sinistres certifiés manquent. Ces dépendances US-24/27 ne sont pas simulées.
