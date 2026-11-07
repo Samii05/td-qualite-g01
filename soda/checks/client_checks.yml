@@ -1,22 +1,26 @@
 checks for client:
   # RQ-020 : clé primaire unique et renseignée
-  - duplicate_count(client_id) = 0
-  - missing_count(client_id) = 0
+  - duplicate_count(client_id) = 0:
+      name: RQ-020 identifiant client unique
+  - missing_count(client_id) = 0:
+      name: RQ-020 identifiant client renseigne
 
   # RQ-009 : type de personne dans le domaine
   - invalid_count(type_personne) = 0:
       name: RQ-009 type de personne autorise
       valid values: ['prospect', 'souscripteur', 'assure']
 
-  # RQ-003 : téléphone d'un souscripteur renseigné (nul, vide ou blanc)
+  # RQ-003 : téléphone d'un souscripteur renseigné (nul, vide ou blanc) — AVERTISSEMENT
   - failed rows:
       name: RQ-003 telephone du souscripteur renseigne
       fail condition: type_personne = 'souscripteur' AND (telephone IS NULL OR TRIM(telephone) = '')
+      warn: when > 0
 
-  # RQ-005 : code postal à 5 chiffres pour une adresse en France
+  # RQ-005 : code postal à 5 chiffres pour une adresse en France — AVERTISSEMENT
   - failed rows:
       name: RQ-005 code postal sur 5 chiffres (France)
       fail condition: pays = 'FR' AND cp NOT REGEXP '^[0-9]{5}$'
+      warn: when > 0
 
   # RQ-007 : pays dans la liste de référence
   - failed rows:

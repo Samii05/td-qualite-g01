@@ -1,7 +1,9 @@
 checks for contrat:
   # RQ-020 : clé primaire unique et renseignée
-  - duplicate_count(contrat_id) = 0
-  - missing_count(contrat_id) = 0
+  - duplicate_count(contrat_id) = 0:
+      name: RQ-020 identifiant de contrat unique
+  - missing_count(contrat_id) = 0:
+      name: RQ-020 identifiant de contrat renseigne
 
   # RQ-001 : la date de fin est postérieure à la date de début (lignes en échec exportées)
   - failed rows:
@@ -22,6 +24,7 @@ checks for contrat:
   # RQ-018 : écart entre la définition Commerciale (au moins un contrat) et la fiche CD-001
   # (contrat en cours ET cotisation à jour sur 3 mois), à la date de référence 2026-10-01
   - ecart_client_actif:
+      name: RQ-018 ecart client actif commercial vs CD-001
       ecart_client_actif query: |
         SELECT COUNT(DISTINCT c.souscripteur_id)
              - COUNT(DISTINCT CASE WHEN c.date_debut <= '2026-10-01' AND c.date_fin >= '2026-10-01'

@@ -4,13 +4,14 @@ Une ligne par décision de seuil, de sévérité, de définition ou de règle de
 
 | N° | Date | Séance | Règle ou objet | Décision (ce qui est arrêté) | Justification chiffrée (preuve) | Rôle décideur | Alternative écartée |
 |---|---|---|---|---|---|---|---|
-| 1 | … | … | … | … | … | … | … |
-| 2 | … | … | … | … | … | … | … |
-| 3 | … | … | … | … | … | … | … |
-| 4 | … | … | … | … | … | … | … |
-| 5 | … | … | … | … | … | … | … |
-| 6 | … | … | … | … | … | … | … |
-| 7 | … | … | … | … | … | … | … |
-| 8 | … | … | … | … | … | … | … |
+| 1 | 14/10/2026 | S1 | Lot de référence | Toutes les mesures portent sur le lot L-2026-10-01, copie fidèle des sources dans bronze | Porte B : 0 écart de comptage et de somme de contrôle sur les 7 tables (RQ-021, RQ-022 à 100 %) ; notebook S1, US-03 | Data Steward | Mesurer directement sur les sources cif et crm |
+| 2 | 21/10/2026 | S2 | RQ-002 (âge) | L'âge du souscripteur se calcule à la date de début du contrat, sur les seules personnes physiques | 301 souscripteurs mineurs à la signature, contre 157 à la date du jour ; 92 996 contrats testables ; notebook S2, US-13 | Data Owner | Calculer l'âge à la date du jour |
+| 3 | 21/10/2026 | S2 | RQ-005 (code postal) | La règle ne s'applique qu'aux adresses en France | Sans filtre : 2 317 échecs CRM et 244 CIF ; avec filtre : 1 456 CRM et 0 CIF (codes CH, BE, LU valides) ; notebook S2, US-10 | Data Steward | Tester toutes les adresses, ce qui crée de faux échecs |
+| 4 | 24/10/2026 | S3 | RQ-003, RQ-005, RQ-016 (sévérité) | Ces règles d'avertissement sont écrites avec `warn:` dans Soda : elles signalent sans fermer la porte | Elles étaient en « fail » alors que `dq.regle` les classe en AVERTISSEMENT ; après correction : code retour 1 pour un avertissement seul, 2 pour un échec ; notebook S3, US-12 | Data Steward | Garder « fail », ce qui bloque la migration pour une règle tolérée |
+| 5 | 24/10/2026 | S3 | RQ-013 (valeur sentinelle) | `assure_id = '0'` veut dire « pas d'assuré » : il est exclu des contrôles de clé et sera remplacé par NULL dans silver ; bronze garde le 0 | 40 300 orphelins avant traitement, 300 après ; l'écart (40 000) est exactement le nombre de 0 ; notebook S3, US-17 | Data Steward | Compter le 0 comme un identifiant client, soit 40 000 faux orphelins |
+| 6 | 31/10/2026 | S3 | RQ-018 (client actif, fiche CD-001) | Une seule définition du client actif : contrat en cours ET cotisation à jour sur 3 mois, dans la vue `dq.v_client_actif_bronze`, interrogée par les trois directions | En S1, trois chiffres (de 38 049 à 50 508) ; avec la vue, 37 643 pour les trois directions, confirmé par un calcul indépendant ; notebook S3, US-14 | Data Owner | Laisser chaque direction calculer avec sa propre définition |
+| 7 | 31/10/2026 | S3 | RQ-015 (statut prospect) | Proposée : un prospect qui détient au moins un contrat devient « souscripteur » ; correction dans silver | 479 prospects avec contrat, dont 428 avec un contrat en cours (jusqu'à 5 contrats pour un même prospect) ; notebook S3, US-18 | Data Owner (à valider) | Laisser le statut « prospect » ou supprimer les contrats |
+| 8 | 31/10/2026 | S3 | RQ-016 (statut souscripteur) | Proposée : un souscripteur sans aucun contrat redevient « prospect », sauf si l'équipe commerciale retrouve son contrat ; correction dans silver | 955 souscripteurs sans contrat, aucun n'est assuré sur un autre contrat ; notebook S3, US-18 | Data Owner (à valider) | Garder « souscripteur » sans contrat associé |
+| 9 | 31/10/2026 | S3 | RQ-017 (sinistre hors garantie) | Proposée : les 344 sinistres couverts par un autre contrat du même souscripteur sont à rattacher au bon contrat ; les 856 autres sont examinés comme de vraies anomalies | 1 200 sinistres hors période (480 avant le début, 720 après la fin), dont 344 faux positifs probables (renouvellement) ; notebook S3, US-19 | Data Steward | Traiter les 1 200 sinistres comme des sinistres sans garantie |
 
 Ajoutez des lignes autant que nécessaire. Exemples de décisions attendues : sévérité d'une règle, seuil d'avertissement, définition unique du client actif, convention de la valeur sentinelle, seuils de rapprochement, règle de survie par attribut, seuil de la porte G.
